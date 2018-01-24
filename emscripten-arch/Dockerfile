@@ -4,7 +4,6 @@ ARG parallel=4
 USER root
 RUN useradd -m build
 
-COPY mirrorlist.txt /etc/pacman.d/mirrorlist
 RUN pacman --noconfirm -Syyu pacman-contrib emscripten cmake binutils make gcc fakeroot
 RUN paccache -vrk0
 
