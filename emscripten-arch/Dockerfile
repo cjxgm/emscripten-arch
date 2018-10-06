@@ -5,7 +5,7 @@ USER root
 RUN useradd -m build
 
 COPY mirrorlist.txt /etc/pacman.d/mirrorlist
-RUN pacman --noconfirm -Syyu emscripten cmake binutils make gcc fakeroot
+RUN pacman --noconfirm -Syyu pacman-contrib emscripten cmake binutils make gcc fakeroot
 RUN paccache -vrk0
 
 USER build
@@ -16,7 +16,7 @@ ENV MAKEFLAGS -j$parallel
 RUN makepkg
 
 USER root
-RUN pacman --noconfirm -Rns fakeroot
+RUN pacman --noconfirm -Rns pacman-contrib fakeroot
 RUN pacman --noconfirm -U binaryen-*.pkg.tar.xz
 
 USER build
