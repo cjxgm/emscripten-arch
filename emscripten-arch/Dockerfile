@@ -24,7 +24,7 @@ WORKDIR /home/build
 RUN rm -r binaryen
 
 COPY hello.cpp .
-RUN source /etc/profile && emcc -v  
+RUN source /etc/profile && emcc -v
 RUN source /etc/profile && em++ -std=c++14 -o hello.js hello.cpp -s BINARYEN=1 -s DISABLE_EXCEPTION_CATCHING=0 -Os
 RUN node hello.js
 
