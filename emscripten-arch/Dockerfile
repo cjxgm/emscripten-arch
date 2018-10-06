@@ -16,7 +16,7 @@ ENV MAKEFLAGS -j$parallel
 RUN makepkg
 
 USER root
-RUN pacman --noconfirm -Rns gcc fakeroot
+RUN pacman --noconfirm -Rns fakeroot
 RUN pacman --noconfirm -U binaryen-*.pkg.tar.xz
 
 USER build
